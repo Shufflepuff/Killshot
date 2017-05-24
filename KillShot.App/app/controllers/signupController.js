@@ -19,7 +19,7 @@
         })
             .then(function (result) {
                 console.log("result=", result);
-                $location.path("/");
+                $location.path("/home");
             });
     }
 }]);
