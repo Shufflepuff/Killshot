@@ -16,21 +16,38 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace KillShot.App.DependencyResolution {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.Owin.Security;
+    using Microsoft.Owin.Security.DataHandler;
+    using Microsoft.Owin.Security.DataHandler.Encoder;
+    using Microsoft.Owin.Security.DataHandler.Serializer;
+    using Microsoft.Owin.Security.DataProtection;
+    using Models;
+    using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
-	
+    using System.Data.Entity;
+
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
 
         public DefaultRegistry() {
             Scan(
-                scan => {
+                scan =>
+                {
                     scan.TheCallingAssembly();
                     scan.WithDefaultConventions();
                 });
-            //For<IExample>().Use<Example>();
-        }
 
+            For<ISecureDataFormat<AuthenticationTicket>>().Use<SecureDataFormat<AuthenticationTicket>>();
+            For<IDataSerializer<AuthenticationTicket>>().Use<TicketSerializer>();
+            For<IDataProtector>().Use(() => new DpapiDataProtectionProvider().Create("ASP.NET Identity"));
+            For<ITextEncoder>().Use<Base64UrlTextEncoder>();
+
+            For<IUserStore<ApplicationUser>>().Use<UserStore<ApplicationUser>>();
+            For<DbContext>().Use(() => new ApplicationDbContext());
+        }
         #endregion
     }
 }
