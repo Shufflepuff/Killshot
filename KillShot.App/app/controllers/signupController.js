@@ -15,11 +15,11 @@
                     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                 return str.join("&");
             },
-            data: { Email: $scope.username, Password: $scope.password, ConfirmPassword: $scope.confirmPassword  }
+            data: { Email: $scope.username, Password: $scope.password, ConfirmPassword: $scope.confirmPassword }
         })
             .then(function (result) {
                 console.log("result=", result);
-                $location.path("/login");
+                $location.path("/");
             });
     }
 }]);
