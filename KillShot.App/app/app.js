@@ -12,6 +12,11 @@ app.config([
             {
                 templateUrl: "app/partials/Home.html",
                 controller: "homeController"
+            })
+            .when("/signup",
+            {
+                templateUrl: "app/partials/SignUp.html",
+                controller: "signupController"
             });
 
     }
