@@ -36,6 +36,7 @@ namespace KillShot.App.DependencyResolution
         public StructureMapWebApiDependencyResolver(IContainer container)
             : base(container)
         {
+            container.AssertConfigurationIsValid();
         }
 
         #endregion
