@@ -9,6 +9,6 @@ namespace KillShot.App.DAL
 {
     public interface IPlayerRepository
     {
-        List<Player> GetAllPlayers();
+        IEnumerable<Player> GetAllPlayers();
     }
 }

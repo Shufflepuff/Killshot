@@ -8,9 +8,15 @@ namespace KillShot.App.DAL
 {
     public class PlayerRepository : IPlayerRepository
     {
-        public List<Player> GetAllPlayers()
+        readonly ApplicationDbContext _context;
+
+        public PlayerRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public IEnumerable<Player> GetAllPlayers()
+        {
+            return _context.Players;
         }
     }
 }
