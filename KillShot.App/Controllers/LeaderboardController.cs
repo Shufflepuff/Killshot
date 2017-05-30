@@ -22,7 +22,8 @@ namespace KillShot.App.Controllers
         [Route("api/players")]
         public List<Player> GetAll()
         {
-            return _repo.GetAllPlayers();
+            var players = _repo.GetAllPlayers().ToList();
+            return players;
         }
     }
 }

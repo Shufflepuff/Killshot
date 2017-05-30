@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
 
 namespace KillShot.App.Models
 {
@@ -20,8 +21,11 @@ namespace KillShot.App.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        public virtual DbSet<Player> Players { get; set; }
+
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("KillShot", throwIfV1Schema: false)
         {
         }
         
