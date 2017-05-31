@@ -10,5 +10,6 @@ namespace KillShot.App.DAL
     public interface IPlayerRepository
     {
         IEnumerable<Player> GetAllPlayers();
+        bool IncrementPlayerScore(int id);
     }
 }

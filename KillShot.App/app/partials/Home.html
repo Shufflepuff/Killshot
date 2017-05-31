@@ -1,11 +1,6 @@
 ﻿<h1>Leaderboard</h1>
 <div id="leaderboard" ng-repeat="player in players" >
     <ul>
-        <li>{{player}}</li>
-        <li>{{player.Name}} {{player.Score}}</li>
+        <li>{{player.Name}} || Score = {{player.Score}} <input type="button" value="Add Point" ng-click="AddPoint(player.Id)" /></li>
     </ul>
-</div>
-
-<div>
-    <input type="button" value="Add Kill" ng-click="Kill(id)" />
 </div>

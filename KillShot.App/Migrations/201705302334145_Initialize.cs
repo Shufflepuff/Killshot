@@ -3,7 +3,7 @@ namespace KillShot.App.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialize : DbMigration
+    public partial class Initialize : DbMigration
     {
         public override void Up()
         {

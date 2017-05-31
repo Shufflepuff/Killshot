@@ -7,5 +7,12 @@
             $scope.players = result.data;
         });
 
+    $scope.AddPoint = function (playerId) {
+        $http.put(`/api/players/${playerId}`)
+            .then(function (result) {
+                console.log("result: ", result);
+            });
+    };
+
     console.log("$", $scope.players);
 }]);

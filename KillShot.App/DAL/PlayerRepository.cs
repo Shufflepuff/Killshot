@@ -14,9 +14,27 @@ namespace KillShot.App.DAL
         {
             _context = context;
         }
+
         public IEnumerable<Player> GetAllPlayers()
         {
             return _context.Players;
+        }
+
+        public bool IncrementPlayerScore(int id)
+        {
+            var playerToIncrement = _context.Players.FirstOrDefault(p => p.Id == id);
+
+            if (playerToIncrement != null)
+            {
+                playerToIncrement.Score++;
+                _context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
