@@ -25,5 +25,12 @@ namespace KillShot.App.Controllers
             var players = _repo.GetAllPlayers().ToList();
             return players;
         }
+
+        [Route("api/players/{playerId}")]
+        [HttpPut]
+        public bool IncrementPlayerScore(int playerId)
+        {
+            return _repo.IncrementPlayerScore(playerId);
+        }
     }
 }
